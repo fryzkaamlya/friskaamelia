@@ -11,17 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('paket', function (Blueprint $table) {
+        Schema::create('admin', function(Blueprint $table){
             $table->id();
-            $table->integer('no_resi');
-            $table->string('berat');
-            $table->integer('tanggal_kirim');
-            $table->unsignedBigInteger('pengirim_id');
-            $table->foreign('pengirim_id')->references('id')->on('pengirim');
-            $table->timestamps();
-    });
-
-}
+            $table->string('nama_admin');
+            $table->string('keterangan');
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')->references('id')->on('user');
+        });
+    }
 
     /**
      * Reverse the migrations.
